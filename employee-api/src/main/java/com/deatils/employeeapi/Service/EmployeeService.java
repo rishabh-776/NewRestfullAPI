@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.deatils.employeeapi.Dao.IEmployeeDao;
 import com.deatils.employeeapi.dto.Employee;
 
 
@@ -18,31 +20,38 @@ public class EmployeeService implements IEmployeeService{
             new Employee(2,"Giyan","EDF"),
             new Employee(3,"Suniyo","JHG")));
 	
+	
+	@Autowired
+	private IEmployeeDao empref;
+	
 
 	@Override
 	public List<Employee> getALLemployee() {
 		// TODO Auto-generated method stub
-		return empList;
+		//return empList;
+		return empref.findAll();
 	}
 
 
 	@Override
 	public Employee getEmployeeById(int empId) {
 		// TODO Auto-generated method stub
-		return empList.stream().filter(e -> e.getEmpID() == empId).findFirst().get();
+		//return empList.stream().filter(e -> e.getEmpID() == empId).findFirst().get();
+		return empref.getOne(empId);
 	}
 
 
 	@Override
 	public void addEmployee(Employee employee) {
-		empList.add(employee);
+		//empList.add(employee);
+		 empref.save(employee);
 		
 	}
 
 
 	@Override
 	public void updateEmployee(Employee employee, int empId) {
-		for(int i =0; i < empList.size(); i++) 
+		/*for(int i =0; i < empList.size(); i++) 
 		{
 			Employee e = empList.get(i);
 			if(e.getEmpID()==empId)
@@ -51,13 +60,17 @@ public class EmployeeService implements IEmployeeService{
 			}
 		}
 		
+	}*/
+		empref.save(employee);
 	}
 
 
 	@Override
 	public void deleteEmployee(int empId) {
 		
-		empList.removeIf(e -> e.getEmpID() == empId);
+		//empList.removeIf(e -> e.getEmpID() == empId);
+		
+		empref.deleteById(empId);
 	}
 	
 	
