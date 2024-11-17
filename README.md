@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is an Employee Management System (EMS) built using Spring Boot. It provides a RESTful API to manage employee data, allowing users to perform CRUD operations on employee records.
+This project is an Employee Management System (EMS) built using Spring Boot. It provides a RESTful API to manage employee data, allowing users to perform CRUD operations on employee records. The system includes role-based access control to secure endpoints based on user roles.
 
 ## Features
 
@@ -10,6 +10,7 @@ This project is an Employee Management System (EMS) built using Spring Boot. It 
 - Employee search functionality
 - Basic validation for input data
 - JSON format for data exchange
+- Role-based authorization for securing endpoints
 
 ## Technologies Used
 
@@ -18,15 +19,19 @@ This project is an Employee Management System (EMS) built using Spring Boot. It 
 - Spring Web
 - Spring Data JPA
 - MySQL
+- Spring Security (for role-based authorization)
 
 ## Prerequisites
 
-- Java 8 
+- Java 8
 - Maven
+- MySQL (or another relational database)
 
 ## Getting Started
 
 ### Clone the Repository
+
+Clone the project to your local machine:
 
 ```bash
 git clone https://github.com/rishabh-776/NewRestfullAPI.git
